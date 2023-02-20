@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     google = {
-      source  = "hashicorp/google-beta"
-      version = "4.16.0"
+      source  = "hashicorp/google"
+      version = "4.53.1"
     }
     random = {
       source  = "hashicorp/random"
@@ -73,7 +73,7 @@ resource "google_container_cluster" "primary" {
     enable_components = ["SYSTEM_COMPONENTS", "WORKLOADS"]
   }
   monitoring_config {
-    enable_components = ["SYSTEM_COMPONENTS", "WORKLOADS"]
+    enable_components = ["SYSTEM_COMPONENTS", "APISERVER", "CONTROLLER_MANAGER"]
   }
 
   network    = "projects/${var.project_id}/global/networks/${var.project_id}-vpc"

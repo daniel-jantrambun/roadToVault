@@ -9,7 +9,7 @@ cluster_name = "<your_cluster_name"
 region     = "europe-west4"
 zone       = "europe-west4-a"
 
-cluster_kubernetes_version = "1.21.6"
+cluster_kubernetes_version = "1.24.9"
 
 cluster_secondary_range_name  = "subnet-range"
 services_secondary_range_name = "subnet-range"
