@@ -7,7 +7,7 @@ The goal of this article is to show how to create a GKE cluster with [HashiCorp 
 Having an active GCP account, linked to a billing account.
 Having enabled the following API:
 
-- [compute api)](https://console.cloud.google.com/apis/library/compute.googleapis.com)
+- [compute api](https://console.cloud.google.com/apis/library/compute.googleapis.com)
 - [storage api](https://console.cloud.google.com/apis/library/storage.googleapis.com)
 - [container api](https://console.cloud.google.com/apis/library/container.googleapis.com)
 
