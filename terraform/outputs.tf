@@ -22,3 +22,8 @@ output "kubernetes_cluster_host" {
   value       = google_container_cluster.primary.endpoint
   description = "GKE Cluster Host"
 }
+
+output "network" {
+  value       = google_compute_network.vpc.name
+  description = "network name"
+}

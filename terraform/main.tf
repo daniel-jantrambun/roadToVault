@@ -48,7 +48,7 @@ resource "google_compute_subnetwork" "subnet" {
   name                     = "${var.project_id}-subnet"
   region                   = var.region
   network                  = google_compute_network.vpc.name
-  ip_cidr_range            = "192.168.1.0/24"
+  ip_cidr_range            = "192.168.113.0/24"
   private_ip_google_access = true
 
   secondary_ip_range {
@@ -83,6 +83,9 @@ resource "google_container_cluster" "primary" {
   node_locations = []
 
   private_cluster_config {
+    # we use private node> in order to be able to pull images, we will install a NAT configuration with cloud router.
+    # we could also install ingress/outgress but in this example there is no public access
+    # another solution could be to NOT use private nodes
     enable_private_nodes    = true
     enable_private_endpoint = false
     master_ipv4_cidr_block  = "192.168.0.0/28"
@@ -198,4 +201,23 @@ resource "google_container_node_pool" "pre-emptible-pool" {
       disable-legacy-endpoints = "true"
     }
   }
+}
+
+# this resource is needed to pull images
+# without it, our cluster has no access to internet
+resource "google_compute_router" "router" {
+  project = var.project_id
+  name    = "nat-router"
+  network = google_compute_network.vpc.name
+  region  = var.region
+}
+
+module "cloud-nat" {
+  source                             = "terraform-google-modules/cloud-nat/google"
+  version                            = "~> 2.0"
+  project_id                         = var.project_id
+  region                             = var.region
+  router                             = google_compute_router.router.name
+  name                               = "nat-config"
+  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
 }

@@ -4,12 +4,12 @@ terraform_bucket_name = "<your_bucket_name>"
 
 project_id = "<your_project_id>"
 
-cluster_name = "<your_cluster_name"
+cluster_name = "<your_cluster_name>"
 
 region     = "europe-west4"
 zone       = "europe-west4-a"
 
-cluster_kubernetes_version = "1.24.9"
+cluster_kubernetes_version = "1.24.9-gke.3200"
 
 cluster_secondary_range_name  = "subnet-range"
 services_secondary_range_name = "subnet-range"

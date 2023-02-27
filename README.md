@@ -46,7 +46,7 @@ gcloud auth application-default login
 Once you’re connected, go on the terraform directory of your project, and initialise your terraform project:
 
 ```bash
-terraform init -backend-config="bucket=<your_bucket_name"
+terraform init -backend-config="bucket=<your_bucket_name>"
 ```
 
 In the previously created bucket, there now should be a folder state that contains a file `default.tfstate`
