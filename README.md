@@ -1,6 +1,6 @@
 # Create Kubernetes Cluster With Terraform
 
-The goal of this article is to show how to create a GKE cluster with [HashiCorp Terraform](https://www.terraform.io/). This cluster will be used later to install our vault.
+The goal of this article is to show how to create a GKE cluster with [HashiCorp Terraform](https://www.terraform.io/). This cluster will be used later to install our vault solution.
 
 **Requirements:**
 
