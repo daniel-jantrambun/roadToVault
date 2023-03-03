@@ -1,3 +1,3 @@
 *.json
 terraform/.terraform*
-terraform.tfvars_
+terraform.tfvars
