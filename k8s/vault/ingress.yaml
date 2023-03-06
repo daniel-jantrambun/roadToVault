@@ -1,0 +1,29 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ilb-vaultwarden-ingress
+  namespace: vaultwarden
+  annotations:
+    kubernetes.io/ingress.class: "gce-internal"
+spec:
+  tls:
+  - hosts:
+      - vault.daniel-jantrambun.net
+    secretName: vaultwarden-tls
+  # defaultBackend:
+  #   service:
+  #     name: hostname
+  #     port:
+  #       number: 80
+  rules:
+    - host: vault.daniel-jantrambun.net
+      http:
+        paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: vaultwarden
+              port:
+                number: 80
